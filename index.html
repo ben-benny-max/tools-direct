@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SellerApp - Keyword Research</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulse-teal-extreme {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(32, 208, 155, 1), 0 0 20px rgba(32, 208, 155, 0.8); 
+                transform: scale(1); 
+            }
+            50% { 
+                box-shadow: 0 0 0 40px rgba(32, 208, 155, 0), 0 0 60px rgba(32, 208, 155, 0.5); 
+                transform: scale(1.08); 
+            }
+            100% { 
+                box-shadow: 0 0 0 0 rgba(32, 208, 155, 0), 0 0 20px rgba(32, 208, 155, 0.8); 
+                transform: scale(1); 
+            }
+        }
+        
+        @keyframes pulse-blue-extreme {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(0, 82, 204, 0.8), 0 0 15px rgba(0, 82, 204, 0.5); 
+                transform: scale(1); 
+            }
+            50% { 
+                box-shadow: 0 0 0 30px rgba(0, 82, 204, 0), 0 0 45px rgba(0, 82, 204, 0.3); 
+                transform: scale(1.05); 
+            }
+            100% { 
+                box-shadow: 0 0 0 0 rgba(0, 82, 204, 0), 0 0 15px rgba(0, 82, 204, 0.5); 
+                transform: scale(1); 
+            }
+        }
+
+        .btn-pulse-teal {
+            animation: pulse-teal-extreme 2.2s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+
+        .btn-pulse-blue {
+            animation: pulse-blue-extreme 2.2s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+
+        .step-container {
+            display: none;
+        }
+
+        .step-active {
+            display: block;
+        }
+
+        .blur-table {
+            filter: blur(5px);
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+    <!-- STEP 1: Landing Page -->
+    <div id="step-1" class="step-container step-active bg-[#0B1B2A] min-h-screen flex flex-col text-white">
+        <nav class="flex items-center justify-between px-10 py-6 max-w-7xl mx-auto w-full">
+            <div class="text-2xl font-semibold tracking-tight">sellerapp</div>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <span class="flex items-center cursor-pointer">Product <span class="ml-1 opacity-70">▼</span></span>
+                <span class="flex items-center cursor-pointer">Solutions <span className="ml-1 opacity-70">▼</span></span>
+                <span class="cursor-pointer">Customers</span>
+                <span class="flex items-center cursor-pointer">Resources <span className="ml-1 opacity-70">▼</span></span>
+                <span class="cursor-pointer">Pricing</span>
+                <span class="cursor-pointer">Why SellerApp</span>
+            </div>
+            <button onclick="goToStep(2)" class="btn-pulse-teal bg-teal-400 hover:bg-teal-300 text-slate-900 px-5 py-2.5 rounded-full font-semibold text-sm transition-all flex items-center">
+                Get Started <span class="ml-1">▼</span>
+            </button>
+        </nav>
+
+        <div class="flex-grow flex flex-col items-center justify-center px-4 text-center pb-20">
+            <h1 class="text-6xl md:text-7xl font-bold max-w-5xl leading-tight mb-6">
+                Thousands of Amazon keywords at <br class="hidden md:block"/>
+                <span class="text-teal-400">your fingertips</span>
+            </h1>
+            <p class="text-slate-300 max-w-3xl text-lg mb-10 opacity-90">
+                Discover relevant keywords for your product listing with the SellerApp Amazon Keyword Research tool, and maximize product visibility and sales for your business.
+            </p>
+            <button onclick="goToStep(2)" class="btn-pulse-teal bg-gradient-to-r from-teal-400 to-[#1eb78a] text-[#0B1B2A] px-12 py-5 rounded-full font-bold text-xl shadow-2xl hover:brightness-110 transition-all">
+                Start For Free!
+            </button>
+        </div>
+    </div>
+
+    <!-- STEP 2: Initial Search View -->
+    <div id="step-2" class="step-container max-w-6xl mx-auto px-6 pt-16">
+        <h1 class="text-4xl font-bold mb-3 text-slate-900">Keyword Research</h1>
+        <p class="text-gray-600 mb-2">Research and find keyword opportunities to optimize your ad campaigns and product listing.</p>
+        <a href="#" class="text-blue-600 hover:underline text-sm mb-12 inline-block">Learn More</a>
+
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 max-w-4xl mx-auto mt-8">
+            <div class="relative w-full md:w-2/3">
+                <input type="text" id="keyword-input" value="cat" class="w-full border border-gray-300 rounded-md py-3.5 px-4 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm" placeholder="Enter Keyword">
+                <span class="absolute left-4 -top-2.5 text-[10px] text-gray-500 bg-white px-1">Enter Keyword</span>
+            </div>
+            <button onclick="goToStep(3)" class="btn-pulse-blue w-full md:w-48 bg-[#0052cc] hover:bg-blue-700 text-white font-bold py-3.5 rounded-md transition-colors">
+                Search
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12 mt-28 border-t border-gray-100 pt-16">
+            <div class="flex flex-col">
+                <div class="w-8 h-8 rounded bg-blue-50 border border-blue-200 transform rotate-45 flex items-center justify-center mb-6">
+                    <div class="w-3 h-3 bg-blue-100 rounded-sm"></div>
+                </div>
+                <h3 class="font-semibold mb-3">Optimize your listing</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">Steal your competitors' best keywords and turn your listings into sales machines.</p>
+            </div>
+            <div class="flex flex-col">
+                <div class="w-8 h-8 rounded bg-blue-50 border border-blue-200 transform rotate-45 flex items-center justify-center mb-6">
+                    <div class="w-3 h-3 bg-blue-100 rounded-sm"></div>
+                </div>
+                <h3 class="font-semibold mb-3">Validate product demand</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">See what shoppers are searching for and validate your product demand.</p>
+            </div>
+            <div class="flex flex-col">
+                <div class="w-8 h-8 rounded bg-blue-50 border border-blue-200 transform rotate-45 flex items-center justify-center mb-6">
+                    <div class="w-3 h-3 bg-blue-100 rounded-sm"></div>
+                </div>
+                <h3 class="font-semibold mb-3">Generate more sales</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">Find the high-converting keywords your competitors are using and boost your ad game.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 3 & 4: Search Results Container -->
+    <div id="results-view" class="step-container bg-gray-50/50 min-h-screen pb-20">
+        <!-- Banner only for Step 4 -->
+        <div id="unlocked-banner" class="hidden bg-blue-50 border-b border-blue-100 w-full mb-6">
+            <div class="max-w-[1400px] mx-auto px-6 py-3 flex flex-col sm:flex-row justify-between items-center text-sm">
+                <div class="flex items-center space-x-4">
+                    <span class="font-semibold text-blue-900 bg-white px-3 py-1 rounded-full shadow-sm border border-blue-100">
+                        5/5 searches remaining
+                    </span>
+                    <a href="#" class="text-blue-600 font-medium hover:underline">Get more search</a>
+                </div>
+                <div class="flex items-center space-x-4 mt-3 sm:mt-0">
+                    <span class="text-gray-700">Optimize your ads text directly from here</span>
+                    <button class="btn-pulse-blue bg-white border-2 border-[#0052cc] text-[#0052cc] hover:bg-blue-50 px-6 py-1.5 rounded text-sm font-bold transition-colors">
+                        Connect Ads
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-6 pt-6">
+            <div class="flex flex-col md:flex-row items-end gap-4 mb-8">
+                <div class="relative w-[500px]">
+                    <label class="absolute -top-2 left-3 bg-white px-1 text-[11px] text-gray-500 font-medium">Enter Keyword</label>
+                    <input type="text" value="cat" class="w-full border border-gray-300 rounded-md py-2.5 px-4 text-sm focus:outline-none focus:border-blue-500">
+                </div>
+                <button class="btn-pulse-blue bg-[#0052cc] hover:bg-blue-700 text-white font-bold py-2.5 px-12 rounded-md transition-colors text-sm">
+                    Search
+                </button>
+            </div>
+
+            <div class="flex justify-between items-center text-sm mb-4">
+                <div class="text-gray-500 italic">
+                    Showing Keyword Research results for: <span class="text-gray-800 font-medium not-italic">cat</span> 
+                    <span class="mx-2">|</span> 
+                    Marketplace: Amazon <span class="inline-flex items-center not-italic ml-1">🇺🇸 United States</span>
+                </div>
+                <div class="flex items-center space-x-3 text-xs">
+                    <span class="text-gray-500">Are you looking for Keyword data via API? If so, <a href="#" class="text-blue-600">request for a demo</a></span>
+                </div>
+            </div>
+
+            <!-- Table UI -->
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden relative">
+                <div id="table-wrapper" class="overflow-x-auto blur-table">
+                    <table class="w-full text-left text-sm text-gray-600">
+                        <thead class="text-xs text-gray-500 uppercase bg-gray-50/50 border-b border-gray-200 font-semibold">
+                            <tr>
+                                <th class="px-4 py-3 min-w-[200px] border-r border-gray-100">KEYWORD</th>
+                                <th class="px-4 py-3 border-r border-gray-100">TAGS</th>
+                                <th class="px-4 py-3 border-r border-gray-100">MATCH TYPE</th>
+                                <th class="px-4 py-3 border-r border-gray-100">RELEVANCE</th>
+                                <th class="px-4 py-3 border-r border-gray-100">SEARCH VOLUME</th>
+                                <th class="px-4 py-3 border-r border-gray-100">CPC</th>
+                                <th class="px-4 py-3 border-r border-gray-100">ESTIMATED ORDERS/M...</th>
+                                <th class="px-4 py-3">CONVERSION...</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Unlock Overlay -->
+                <div id="unlock-overlay" class="absolute inset-0 bg-white/40 z-10 flex flex-col items-center justify-center pt-20">
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border border-gray-100 flex flex-col items-center text-center max-w-sm w-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Want to see all results?</h3>
+                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">Sign in to unlock full keyword metrics, competitors data, and advanced filtering.</p>
+                        <button onclick="toggleModal(true)" class="btn-pulse-blue w-full bg-[#0052cc] hover:bg-blue-700 text-white font-bold py-4 rounded-md shadow-lg transition-colors text-lg">
+                            Unlock for free
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="login-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-md">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md p-8 relative">
+            <button onclick="toggleModal(false)" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold tracking-tight mb-4">sellerapp</h2>
+                <h3 class="text-3xl font-semibold mb-2">Login</h3>
+                <p class="text-gray-600 text-sm">Enter your details to login to your account</p>
+            </div>
+
+            <button class="w-full flex items-center justify-center border border-gray-300 rounded-md py-3 mb-6 hover:bg-gray-50 transition-colors font-semibold">
+                <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" /><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" /><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" /><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" /></svg>
+                Login with Google
+            </button>
+
+            <div class="flex items-center text-gray-400 text-sm mb-6 before:flex-1 before:border-t before:border-gray-200 before:mr-4 after:flex-1 after:border-t after:border-gray-200 after:ml-4">
+                or
+            </div>
+
+            <form id="login-form">
+                <div class="mb-6 relative">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-red-500">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </span>
+                        <input type="email" value="user@example.com" class="w-full pl-10 pr-4 py-3 border-2 border-red-500 rounded-md focus:outline-none" required>
+                    </div>
+                    <p class="text-amber-600 text-xs mt-1 absolute -bottom-5 left-0">Email is <span class="font-bold">required</span></p>
+                </div>
+
+                <div class="mb-2 relative mt-8">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </span>
+                        <input type="password" value="password123" class="w-full pl-10 pr-10 py-3 border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-gray-800 font-medium" required>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mb-6">
+                    <a href="#" class="text-[#0052cc] text-sm hover:underline font-medium">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-pulse-blue w-full bg-[#0B4CCC] hover:bg-blue-800 text-white font-bold py-4 rounded-md transition-all mb-4 text-lg shadow-xl">
+                    Login
+                </button>
+            </form>
+
+            <p class="text-center text-sm text-gray-600">
+                New to SellerApp? <a href="#" class="text-[#0052cc] hover:underline font-bold">Create Account</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const tableData = [
+            { id: 1, keyword: 'cat stuff', searchVol: '40.79K', cpc: '$0.75 - $1.35', orders: '1.26K', conv: '3.10%' },
+            { id: 2, keyword: 'cat christmas', searchVol: '16.27K', cpc: '$0.75 - $1.35', orders: '910', conv: '5.60%', selected: true },
+            { id: 3, keyword: 'cat decor', searchVol: '14.7K', cpc: '$0.75 - $1.35', orders: '911', conv: '6.20%' },
+            { id: 4, keyword: 'cat accessories', searchVol: '39.18K', cpc: '$0.36 - $0.54', orders: '1.33K', conv: '3.40%' },
+            { id: 5, keyword: 'cat birthday', searchVol: '10.38K', cpc: '$0.75 - $1.35', orders: '1.35K', conv: '13%' },
+            { id: 6, keyword: 'cat women', searchVol: '9.66K', cpc: '$0.75 - $1.35', orders: '7', conv: '0.08%' },
+        ];
+
+        function renderTable() {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = tableData.map(row => `
+                <tr class="border-b border-gray-50 hover:bg-blue-50/30 ${row.selected ? 'bg-blue-50/50 border-l-2 border-l-blue-500' : ''}">
+                    <td class="px-4 py-4 border-r border-gray-100 font-medium text-gray-700 flex items-center">
+                        <input type="checkbox" class="mr-3 rounded border-gray-300 text-blue-600 w-4 h-4" ${row.selected ? 'checked' : ''}>
+                        ${row.keyword}
+                        <svg class="w-3 h-3 text-blue-500 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </td>
+                    <td class="px-4 py-4 border-r border-gray-100 text-blue-400 font-bold">+</td>
+                    <td class="px-4 py-4 border-r border-gray-100">Phrase</td>
+                    <td class="px-4 py-4 border-r border-gray-100 text-green-500 font-semibold">Very High</td>
+                    <td class="px-4 py-4 border-r border-gray-100 font-medium text-gray-700">${row.searchVol}</td>
+                    <td class="px-4 py-4 border-r border-gray-100">${row.cpc}</td>
+                    <td class="px-4 py-4 border-r border-gray-100">${row.orders}</td>
+                    <td class="px-4 py-4">${row.conv}</td>
+                </tr>
+            `).join('');
+        }
+
+        function goToStep(step) {
+            // Hide all
+            document.querySelectorAll('.step-container').forEach(el => el.classList.remove('step-active'));
+            
+            if (step === 1) {
+                document.getElementById('step-1').classList.add('step-active');
+            } else if (step === 2) {
+                document.getElementById('step-2').classList.add('step-active');
+            } else if (step === 3) {
+                document.getElementById('results-view').classList.add('step-active');
+                document.getElementById('table-wrapper').classList.add('blur-table');
+                document.getElementById('unlock-overlay').classList.remove('hidden');
+                document.getElementById('unlocked-banner').classList.add('hidden');
+            } else if (step === 4) {
+                document.getElementById('results-view').classList.add('step-active');
+                document.getElementById('table-wrapper').classList.remove('blur-table');
+                document.getElementById('unlock-overlay').classList.add('hidden');
+                document.getElementById('unlocked-banner').classList.remove('hidden');
+            }
+        }
+
+        function toggleModal(show) {
+            const modal = document.getElementById('login-modal');
+            if (show) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            toggleModal(false);
+            goToStep(4);
+        });
+
+        // Initialize
+        renderTable();
+    </script>
+</body>
+</html>
