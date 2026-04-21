@@ -149,7 +149,7 @@
                     <a href="#" class="text-blue-600 font-medium hover:underline">Get more search</a>
                 </div>
                 <div class="flex items-center space-x-4 mt-3 sm:mt-0">
-                    <span class="text-gray-700">Optimize your ads text directly from here</span>
+                    <span id="ad-text-rotator" class="text-gray-700 transition-opacity duration-300 w-[120px] text-right">scale your ads</span>
                     <button class="btn-pulse-blue bg-white border-2 border-[#0052cc] text-[#0052cc] hover:bg-blue-50 px-6 py-1.5 rounded text-sm font-bold transition-colors">
                         Connect Ads
                     </button>
@@ -371,6 +371,21 @@
             e.preventDefault();
             handleLoginSuccess();
         });
+
+        // Ad text rotation logic
+        const adTexts = ["scale your ads", "reduce acos"];
+        let adTextIndex = 0;
+        setInterval(() => {
+            const rotatorEl = document.getElementById('ad-text-rotator');
+            if (rotatorEl) {
+                rotatorEl.style.opacity = '0';
+                setTimeout(() => {
+                    adTextIndex = (adTextIndex + 1) % adTexts.length;
+                    rotatorEl.textContent = adTexts[adTextIndex];
+                    rotatorEl.style.opacity = '1';
+                }, 300); // Wait 300ms for fade out before changing text and fading in
+            }
+        }, 3000);
 
         // Initialize
         updateKeywordDisplays();
